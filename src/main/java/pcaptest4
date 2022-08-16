@@ -1,0 +1,17 @@
+import org.apache.hadoop.io.{BytesWritable, IntWritable}
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkConf
+
+object pcaptest4 {
+  /* 这是我的第一个 Scala 程序
+   * 以下程序将输出'Hello World!'
+   */
+  def main(args: Array[String]) {
+    val conf = new SparkConf().setAppName("appName").setMaster("local[1]")
+    val sc=new SparkContext(conf)
+    val distFile = sc.sequenceFile("/home/bjbhaha/Desktop/music.seq",classOf[IntWritable],classOf[BytesWritable])
+    distFile.foreach(x=> println(x._2.toString()))
+
+  }
+}
+
